@@ -131,3 +131,13 @@ class Entrega(Base):
         if self.trabajador:
             return self.trabajador.email
         return None
+
+
+class RefreshToken(Base):
+    __tablename__ = 'RefreshTokens'
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    jti = Column(String(128), nullable=False, unique=True, index=True)
+    user_id = Column(Integer, ForeignKey('Usuarios.ID'), nullable=False)
+    created_at = Column(DateTime(timezone=False), server_default=text("SYSUTCDATETIME()"), nullable=False)
+    revoked = Column(Boolean, nullable=False, server_default=text('0'))
+    usuario = relationship('Usuario')
