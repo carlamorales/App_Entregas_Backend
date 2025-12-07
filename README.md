@@ -32,6 +32,7 @@ python app.py
 - `GET /entregas/<id>`
 - `POST /entregas` (body JSON: `rut, nombre, apellido, beneficio_cod, periodo_cod, firma_base64?`)
 - `PATCH /entregas/<id>` (body JSON: `estado?, firma_base64?`)
+- `POST /entregas/importar` (multipart/form-data con `file` en .csv o .xlsx; columnas soportadas: `rut`, `beneficio_cod`, `periodo`, `cod_sucursal`, `tipo_contrato`, `estado`, `fecha_entrega`, `usuario_creador`)
 - `GET /reportes/entregas-por-beneficio?periodo=2025-10`
 
 
